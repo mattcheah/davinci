@@ -1,7 +1,8 @@
 
 
 class SublimeController 
-    def initialize
+    def initialize(options)
+        @options = options
     end
     
 end
