@@ -1,7 +1,6 @@
 
-class SyntaxInformation
-    attr_reader :options
-   
+
+class Sublime_Input_Controller 
     def initialize(filepath)
         if File.exists?(filepath)
             @file = File.read(filepath)
@@ -48,11 +47,6 @@ class SyntaxInformation
             print "."
         end
         puts "done!"
-        
-        
-    end
-    
-    def parse_atom_xml
         
     end
     

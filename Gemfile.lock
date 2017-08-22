@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colored (1.2)
+    coyote (1.2.0)
+      colored (>= 1.2)
+      rb-fsevent (>= 0.4.0)
+    rb-fsevent (0.10.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  coyote
+
+BUNDLED WITH
+   1.15.4

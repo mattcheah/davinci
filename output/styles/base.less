@@ -55,7 +55,7 @@ atom-text-editor {
 // Syntax styles
 
 .syntax--comment {
-  color: ":::comment_foreground:::";
+  color: #75715E;
 }
 
 .syntax--keyword {
@@ -79,11 +79,11 @@ atom-text-editor {
 }
 
 .syntax--storage {
-  color: ":::storage_foreground:::";
+  color: #F92672;
 }
 
 .syntax--constant {
-  color: ":::built_in_constant_foreground:::";
+  color: #AE81FF;
 
   &.syntax--character.syntax--escape {
     color: @cyan;
@@ -103,24 +103,24 @@ atom-text-editor {
 }
 
 .syntax--variable {
-  color: ":::variable_foreground:::";
+  color: #F92672;
 
   &.syntax--interpolation {
     color: darken(@red, 10%);
   }
 
   &.syntax--parameter.syntax--function {
-    color: ":::function_argument_foreground:::";
+    color: #FD971F;
   }
 }
 
 .syntax--invalid.syntax--illegal {
-  background-color: ":::invalid_deprecated_background:::";
-  color: ":::invalid_deprecated_foreground:::";
+  background-color: #AE81FF;
+  color: #F8F8F0;
 }
 
 .syntax--string {
-  color: ":::string_foreground:::";
+  color: #FF0000;
 
 
   &.syntax--regexp {
@@ -139,7 +139,7 @@ atom-text-editor {
 .syntax--punctuation {
   &.syntax--definition {
     &.syntax--comment {
-      color: ":::comment_foreground:::";
+      color: #75715E;
     }
 
     &.syntax--string,
@@ -173,29 +173,29 @@ atom-text-editor {
 
 .syntax--support {
   &.syntax--class {
-    color: ":::inherited_class_foreground:::";
+    color: #A6E22E;
   }
 
   &.syntax--function  {
-    color: ":::function_call_foreground:::";
+    color: #66D9EF;
 
     &.syntax--any-method {
-      color: ":::function_call_foreground:::";
+      color: #66D9EF;
     }
   }
 }
 
 .syntax--entity {
   &.syntax--name.syntax--function {
-    color: ":::function_call_foreground:::";
+    color: #66D9EF;
   }
   &.syntax--name.syntax--type {
-    color: ":::library_class_type_foreground:::";
+    color: #66D9EF;
     text-decoration: underline;
   }
 
   &.syntax--other.syntax--inherited-class {
-    color: ":::inherited_class_foreground:::";
+    color: #A6E22E;
   }
   &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
     color: @light-orange;
@@ -206,12 +206,12 @@ atom-text-editor {
   }
 
   &.syntax--name.syntax--tag {
-    color: ":::tag_name_foreground:::";
+    color: #F92672;
     text-decoration: underline;
   }
 
   &.syntax--other.syntax--attribute-name {
-    color: ":::tag_attribute_foreground:::";
+    color: #A6E22E;
 
     &.syntax--id {
       color: @blue;

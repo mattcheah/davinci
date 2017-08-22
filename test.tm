@@ -47,7 +47,7 @@
 		<dict>
 			<key>name</key>
 			<string>Comment</string>
-			<key>scope</key>
+			<key>scope</key>fon
 			<string>comment</string>
 			<key>settings</key>
 			<dict>
