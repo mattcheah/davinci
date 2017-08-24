@@ -1,6 +1,8 @@
 
 
-class Sublime_Input_Controller 
+class SublimeInputController 
+    attr_reader :options
+    
     def initialize(filepath)
         if File.exists?(filepath)
             @file = File.read(filepath)

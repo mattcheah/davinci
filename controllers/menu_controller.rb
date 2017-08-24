@@ -4,6 +4,7 @@ require_relative 'sublime_input_controller.rb'
 require_relative 'sublime_output_controller.rb'
 
 
+
 class MenuController
     def initialize
         puts "##### Color Scheme Translator #####"
@@ -27,8 +28,12 @@ class MenuController
         get_from_editor
     end
 
-    def get_from_editor
-        selection = gets.chomp
+    def get_from_editor(option = nil)
+        if option
+            selection = option
+        else
+            selection = gets.chomp
+        end
         
         begin
         
@@ -37,8 +42,8 @@ class MenuController
                 @from_editor = "sublime"
                 puts "Enter the full filepath of your Sublime tmTheme syntax color file."
                 puts "If you do not know where this can be found, please read the documentation."
-                
-                @input_controller = SublimeInputController.new(gets.chomp)
+                filepath = gets.chomp
+                @input_controller = SublimeInputController.new(filepath)
                 
             when "2"
                 @from_editor = "dreamweaver"
@@ -49,7 +54,8 @@ class MenuController
                 @from_editor = "atom"
                 puts "Enter the full filepath of your Atom _____ file."
                 puts "If you do not know where this can be found, please read the documentation."
-                @input_controller = AtomInputController.new(gets.chomp)
+                # @input_controller = AtomInputController.new(gets.chomp)
+                @input_controller = AtomInputController.new("example_files/atom")
             when "4"
                 @from_editor = "brackets"
                 puts "Enter the full filepath of your Brackets _____ file."
@@ -62,9 +68,9 @@ class MenuController
             end
             
         rescue
-        
+            
             puts "This file path was not valid. Please enter your file path again."
-            return get_file
+            return get_from_editor(selection)
             
         end
 
@@ -101,12 +107,12 @@ class MenuController
         case selection
         when "1"
             @to_editor = "sublime"
-            @output_controller = SublimeOutputController.new(@syntax.options)
+            @output_controller = SublimeOutputController.new(@input_controller.options)
         when "2"
             @to_editor = "dreamweaver"
         when "3"
             @to_editor = "atom"
-            @output_controller = AtomOutputController.new(@syntax.options)
+            @output_controller = AtomOutputController.new(@input_controller.options)
         when "4"
             @to_editor = "brackets"
         else
