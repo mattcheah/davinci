@@ -66,7 +66,7 @@ atom-text-editor {
   }
 
   &.syntax--operator {
-    color: @syntax-text-color;
+    color: #F92672;
   }
 
   &.syntax--other.syntax--special-method {
@@ -90,7 +90,7 @@ atom-text-editor {
   }
 
   &.syntax--numeric {
-    color: ":::number_foreground:::";
+    color: #AE81FF;
   }
 
   &.syntax--other.syntax--color {
@@ -143,9 +143,12 @@ atom-text-editor {
     }
 
     &.syntax--string,
-    &.syntax--variable,
-    &.syntax--parameters,
     &.syntax--array {
+      color: #E6DB74;
+    }
+    
+    &.syntax--variable,
+    &.syntax--parameters {
       color: @syntax-text-color;
     }
 
@@ -187,10 +190,11 @@ atom-text-editor {
 
 .syntax--entity {
   &.syntax--name.syntax--function {
-    color: #66D9EF;
+    color: #A6E22E;
   }
   &.syntax--name.syntax--type {
     color: #66D9EF;
+    // color: #A6E22E;
     text-decoration: underline;
   }
 
@@ -198,11 +202,12 @@ atom-text-editor {
     color: #A6E22E;
   }
   &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
+    // color: #66D9EF;
     color: #A6E22E;
   }
 
   &.syntax--name.syntax--section {
-    color: ":::entity_name_foreground:::";
+    color: #A6E22E;
   }
 
   &.syntax--name.syntax--tag {
@@ -229,7 +234,7 @@ atom-text-editor {
   }
 
   &.syntax--require {
-    color: ":::langauge_variable_foreground:::";
+    color: #FD971F;
   }
 
   &.syntax--selector {

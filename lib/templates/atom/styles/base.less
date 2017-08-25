@@ -66,7 +66,7 @@ atom-text-editor {
   }
 
   &.syntax--operator {
-    color: @syntax-text-color;
+    color: ":::keyword_foreground:::";
   }
 
   &.syntax--other.syntax--special-method {
@@ -143,9 +143,12 @@ atom-text-editor {
     }
 
     &.syntax--string,
-    &.syntax--variable,
-    &.syntax--parameters,
     &.syntax--array {
+      color: ":::string_foreground:::";
+    }
+    
+    &.syntax--variable,
+    &.syntax--parameters {
       color: @syntax-text-color;
     }
 
@@ -187,10 +190,11 @@ atom-text-editor {
 
 .syntax--entity {
   &.syntax--name.syntax--function {
-    color: ":::function_call_foreground:::";
+    color: ":::entity_name_foreground:::";
   }
   &.syntax--name.syntax--type {
     color: ":::library_class_type_foreground:::";
+    // color: ":::inherited_class_foreground:::";
     text-decoration: underline;
   }
 
@@ -198,6 +202,7 @@ atom-text-editor {
     color: ":::inherited_class_foreground:::";
   }
   &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
+    // color: ":::library_class_type_foreground:::";
     color: ":::inherited_class_foreground:::";
   }
 
@@ -229,7 +234,7 @@ atom-text-editor {
   }
 
   &.syntax--require {
-    color: ":::langauge_variable_foreground:::";
+    color: ":::language_variable_foreground:::";
   }
 
   &.syntax--selector {
