@@ -42,7 +42,8 @@ class MenuController
                 @from_editor = "sublime"
                 puts "Enter the full filepath of your Sublime tmTheme syntax color file."
                 puts "If you do not know where this can be found, please read the documentation."
-                filepath = gets.chomp
+                # filepath = gets.chomp
+                filepath = "example_files/sublime/monokai.tmTheme"
                 @input_controller = SublimeInputController.new(filepath)
                 
             when "2"
