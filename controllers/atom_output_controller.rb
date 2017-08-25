@@ -48,14 +48,15 @@ class AtomOutputController
     end
     
     def insert_package_info
-            print "."
+        print "."
+        
         @package.gsub!(/:::theme_name:::/, @options[:theme_name])
         File.open("output/package.json", 'w') { |f| f.write(@package) }
     end
     
     def insert_base_info
         
-        base_array = ["comment_foreground", "storage_foreground", "built_in_constant_foreground", "variable_foreground", "function_argument_foreground", "invalid_deprecated_background", "invalid_deprecated_foreground", "string_foreground", "comment_foreground", "inherited_class_foreground", "function_call_foreground", "library_class_type_foreground", "inherited_class_foreground", "tag_name_foreground", "tag_attribute_foreground"]
+        base_array = ["comment_foreground", "storage_foreground", "built_in_constant_foreground", "keyword_foreground", "language_variable_foreground", "function_argument_foreground", "invalid_deprecated_background", "invalid_deprecated_foreground", "string_foreground", "comment_foreground", "inherited_class_foreground", "function_call_foreground", "library_class_type_foreground", "inherited_class_foreground", "tag_name_foreground", "tag_attribute_foreground"]
         
         base_array.each do |opt|
             print "."

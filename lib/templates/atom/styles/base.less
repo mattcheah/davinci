@@ -59,10 +59,10 @@ atom-text-editor {
 }
 
 .syntax--keyword {
-  color: ":::variable_foreground:::";
+  color: ":::keyword_foreground:::";
 
   &.syntax--control {
-    color: ":::variable_foreground:::";
+    color: ":::keyword_foreground:::";
   }
 
   &.syntax--operator {
@@ -70,11 +70,11 @@ atom-text-editor {
   }
 
   &.syntax--other.syntax--special-method {
-    color: @blue;
+    color: ":::keyword_foreground:::";
   }
 
   &.syntax--other.syntax--unit {
-    color: @orange;
+    color: ":::keyword_foreground:::";
   }
 }
 
@@ -86,15 +86,15 @@ atom-text-editor {
   color: ":::built_in_constant_foreground:::";
 
   &.syntax--character.syntax--escape {
-    color: @cyan;
+    color: ":::built_in_constant_foreground:::";
   }
 
   &.syntax--numeric {
-    color: @orange;
+    color: ":::number_foreground:::";
   }
 
   &.syntax--other.syntax--color {
-    color: @cyan;
+    color: ":::built_in_constant_foreground:::";
   }
 
   &.syntax--other.syntax--symbol {
@@ -103,10 +103,10 @@ atom-text-editor {
 }
 
 .syntax--variable {
-  color: ":::variable_foreground:::";
+  color: ":::langauge_variable_foreground:::";
 
   &.syntax--interpolation {
-    color: darken(@red, 10%);
+    color: darken(":::language_variable_foreground:::", 10%);
   }
 
   &.syntax--parameter.syntax--function {
@@ -166,7 +166,7 @@ atom-text-editor {
   }
 
   &.syntax--section.syntax--embedded {
-    color: darken(@red, 10%);
+    color: darken(":::language_variable_foreground:::", 10%);
   }
 
 }
@@ -198,11 +198,11 @@ atom-text-editor {
     color: ":::inherited_class_foreground:::";
   }
   &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
-    color: @light-orange;
+    color: ":::inherited_class_foreground:::";
   }
 
   &.syntax--name.syntax--section {
-    color: @blue;
+    color: ":::entity_name_foreground:::";
   }
 
   &.syntax--name.syntax--tag {
@@ -229,7 +229,7 @@ atom-text-editor {
   }
 
   &.syntax--require {
-    color: ":::variable_foreground:::";
+    color: ":::langauge_variable_foreground:::";
   }
 
   &.syntax--selector {

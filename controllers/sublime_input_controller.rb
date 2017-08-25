@@ -17,6 +17,7 @@ class SublimeInputController
     end
     
     def parse_sublime_xml
+        @options[:theme_name] = @xml.xpath("//plist/dict/*[1]/following-sibling::string[1]/text()").text
         
         all_settings = @xml.xpath('//dict/array/dict')
         first_setting = all_settings.shift
@@ -30,10 +31,12 @@ class SublimeInputController
         all_settings.each do |setting|
             key = setting.xpath('./string[position()=1]/text()').text.underscore
             foreground_value = setting.xpath('./dict/key[text()="foreground"]/following-sibling::string[1]/text()').text
+            background_value = setting.xpath('./dict/key[text()="background"]/following-sibling::string[1]/text()').text
             font_style_value = setting.xpath('./dict/key[text()="fontStyle"]/following-sibling::string[1]/text()').text
             
             
             @options["#{key}_foreground".to_sym] = foreground_value if foreground_value != ""
+            @options["#{key}_background".to_sym] = background_value if background_value != ""
             @options["#{key}_font_style".to_sym] = font_style_value if font_style_value != ""
              
         end
@@ -41,7 +44,7 @@ class SublimeInputController
         
         puts "done!"
         puts ""
-        # pp @options
+        pp @options
         
         
     end
