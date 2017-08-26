@@ -98,15 +98,15 @@ atom-text-editor {
   }
 
   &.syntax--other.syntax--symbol {
-    color: @green;
+    color: ":::built_in_constant_foreground:::";
   }
 }
 
 .syntax--variable {
-  color: ":::langauge_variable_foreground:::";
+  color: @syntax-text-color;
 
   &.syntax--interpolation {
-    color: darken(":::language_variable_foreground:::", 10%);
+    color: darken(@syntax-text-color, 10%);
   }
 
   &.syntax--parameter.syntax--function {
@@ -124,15 +124,15 @@ atom-text-editor {
 
 
   &.syntax--regexp {
-    color: @cyan;
+    color: ":::string_foreground:::";
 
     .syntax--source.syntax--ruby.syntax--embedded {
-      color: @orange;
+      color: ":::string_foreground:::";
     }
   }
 
   &.syntax--other.syntax--link {
-    color: @red;
+    color: ":::string_foreground:::";
   }
 }
 
@@ -154,33 +154,33 @@ atom-text-editor {
 
     &.syntax--heading,
     &.syntax--identity {
-      color: @blue;
+      color: @syntax-text-color;
     }
 
     &.syntax--bold {
-      color: @light-orange;
+      color: @syntax-text-color;
       font-weight: bold;
     }
 
     &.syntax--italic {
-      color: @purple;
+      color: @syntax-text-color;
       font-style: italic;
     }
   }
 
   &.syntax--section.syntax--embedded {
-    color: darken(":::language_variable_foreground:::", 10%);
+    color: darken(":::string_foreground:::", 10%);
   }
 
 }
 
 .syntax--support {
   &.syntax--class {
-    color: ":::inherited_class_foreground:::";
+    color: ":::library_class_type_foreground:::";
   }
 
   &.syntax--function  {
-    color: ":::function_call_foreground:::";
+    color: @syntax-text-color;
 
     &.syntax--any-method {
       color: ":::function_call_foreground:::";
@@ -199,7 +199,8 @@ atom-text-editor {
   }
 
   &.syntax--other.syntax--inherited-class {
-    color: ":::inherited_class_foreground:::";
+    // color: ":::inherited_class_foreground:::";
+    color: ":::library_class_type_foreground:::";
   }
   &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
     // color: ":::library_class_type_foreground:::";
@@ -219,7 +220,7 @@ atom-text-editor {
     color: ":::tag_attribute_foreground:::";
 
     &.syntax--id {
-      color: @blue;
+      color: ":::tag_attribute_foreground:::";
     }
   }
 }

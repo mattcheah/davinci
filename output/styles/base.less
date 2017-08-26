@@ -98,15 +98,15 @@ atom-text-editor {
   }
 
   &.syntax--other.syntax--symbol {
-    color: @green;
+    color: #AE81FF;
   }
 }
 
 .syntax--variable {
-  color: ":::langauge_variable_foreground:::";
+  color: @syntax-text-color;
 
   &.syntax--interpolation {
-    color: darken(#FD971F, 10%);
+    color: darken(@syntax-text-color, 10%);
   }
 
   &.syntax--parameter.syntax--function {
@@ -124,15 +124,15 @@ atom-text-editor {
 
 
   &.syntax--regexp {
-    color: @cyan;
+    color: #E6DB74;
 
     .syntax--source.syntax--ruby.syntax--embedded {
-      color: @orange;
+      color: #E6DB74;
     }
   }
 
   &.syntax--other.syntax--link {
-    color: @red;
+    color: #E6DB74;
   }
 }
 
@@ -154,33 +154,33 @@ atom-text-editor {
 
     &.syntax--heading,
     &.syntax--identity {
-      color: @blue;
+      color: @syntax-text-color;
     }
 
     &.syntax--bold {
-      color: @light-orange;
+      color: @syntax-text-color;
       font-weight: bold;
     }
 
     &.syntax--italic {
-      color: @purple;
+      color: @syntax-text-color;
       font-style: italic;
     }
   }
 
   &.syntax--section.syntax--embedded {
-    color: darken(#FD971F, 10%);
+    color: darken(#E6DB74, 10%);
   }
 
 }
 
 .syntax--support {
   &.syntax--class {
-    color: #A6E22E;
+    color: #66D9EF;
   }
 
   &.syntax--function  {
-    color: #66D9EF;
+    color: @syntax-text-color;
 
     &.syntax--any-method {
       color: #66D9EF;
@@ -199,7 +199,8 @@ atom-text-editor {
   }
 
   &.syntax--other.syntax--inherited-class {
-    color: #A6E22E;
+    // color: #A6E22E;
+    color: #66D9EF;
   }
   &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
     // color: #66D9EF;
@@ -219,7 +220,7 @@ atom-text-editor {
     color: #A6E22E;
 
     &.syntax--id {
-      color: @blue;
+      color: #A6E22E;
     }
   }
 }
