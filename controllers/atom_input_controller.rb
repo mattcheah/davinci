@@ -1,33 +1,37 @@
 require "pp"
 
 class AtomInputController
+    attr_accessor :options
+  
     def initialize(directory_path)
         @directory_path = directory_path
+        @options = {}
+        @color_hash = {}
         `coyote '#{@directory_path}/index.less:#{@directory_path}/output.less'`
     end
      
     def parse_atom_less
-      package = File.read("#{@directory_path}/package.json")
-  
+
       @base = File.read("#{@directory_path}/output.less")
-      @options = {}
-      @color_hash = {}
+
+      get_theme_name
       parse_colors
-      
+      get_base_options
 
-      @options = get_base_options
-
-      # package.scan(/"name":\s"(.*?)"\,.*?"theme":\s"syntax"/mx) do |m|
-      #   @options[:theme_name] = m[0]
-      # end
       puts "done!"
       puts ""
-      puts "options:"
-      pp @options
+      # puts "options:"
+      # pp @options
 
     end
 
     private
+    
+    def get_theme_name
+      package.scan(/"name":\s"(.*?)"\,.*?"theme":\s"syntax"/mx) do |m|
+        @options[:theme_name] = m[0]
+      end
+    end
 
     def parse_colors
 
