@@ -1,6 +1,8 @@
 require "pp"
 
 class AtomInputController
+    attr_accessor :options
+  
     def initialize(directory_path)
         @directory_path = directory_path
         @options = {}
@@ -49,8 +51,6 @@ class AtomInputController
     end
 
     def get_base_options
-      
-       
       
         parse_options = {
           foreground: /atom-text-editor.*?color:\s*([\#|\@|rgb].*?);.*?\}/mx,
