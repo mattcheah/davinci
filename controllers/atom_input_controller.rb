@@ -41,25 +41,46 @@ class AtomInputController
         
         # Match an @sign followed by a color name, then 0 or more spaces, then a pound sign with the color hex value.
         @color_hash[m[0].underscore.to_sym] = color
-      print "."
+        print "."
       end
-      
-      # puts "color_hash: "
-      # pp @color_hash
-
-      # colors.split('\n')
-      # colors.each do |line|
-      #   m = /(@.*):\s+(\#.*);/mx.match(line)
-      #   @color_hash[m[0].underline.to_sym] = m[1]
-      # end
 
     end
 
     def get_base_options
+      
+        parse_options = {
+          foreground: /atom-text-editor.*?color:\s*([\#|\@|rgb].*?);.*?\}/mx,
+          background: /atom-text-editor.*?background-color:\s*(\#.*?);/mx,
+          caret: /atom-text-editor.*?cursor.*?\{.*?color:\s*(\#.*?);/mx,
+          invisibles: /invisible-character.*?\{.*?color:\s*(\#.*?);/mx,
+          line_highlight: /\.line-number\.cursor-line.*?\{.*?background-color:\s*(\#.*?);/mx,
+          comment_foreground: /\.syntax--comment.*?\{.*?color:\s*(\#.*?);/mx,
+          string_foreground: /\.syntax--string.*?\{.*?color:\s*(\#.*?);/mx,
+          number_foreground: /\.syntax--constant.*?syntax--numeric.*?\{.*?color:\s*(\#.*?);/mx,
+          build_in_constant_foreground: /\.syntax--constant.*?\{.*?color:\s*(\#.*?);/mx,
+          user_defined_constant_foreground: /\.syntax--constant.*?\{.*?color:\s*(\#.*?);/mx,
+          variable_foreground: /\.syntax--variable.*?\{.*?color:\s*(\#.*?);/mx,
+          keyword_foreground: /\.syntax--keyword.*?\{.*?color:\s*(\#.*?);/mx,
+          storage_type_foreground: /\.syntax--storage.*?\{.*?color:\s*(\#.*?);/mx,
+          entity_name_foreground: /syntax--class.*?\{.*?color:\s*(\#.*?);/mx,
+          function_argument_foreground: /syntax--function.*?\{.*?color:\s*(\#.*?);/mx,
+          tag_name_foreground: /syntax--tag.*?\{.*?color:\s*(\#.*?);/mx,
+          tag_attribute_foreground: /syntax--attribute-name.*?\{.*?color:\s*(\#.*?);/mx,
+          function_call_foreground: /syntax--function.*?\{.*?color:\s*(\#.*?);.*?\}/mx,
+          library_function_foreground: /syntax--function.*?\{.*?color:\s*(\#.*?);/mx,
+          invalid_foreground: /syntax--illegal.*?\{.*?color:\s*(\#.*?);/mx,
+          invalid_background: /syntax--illegal.*?\{.*?background-color:\s*(\#.*?);/mx,
+        }
         
-        @options[:background] = get_hex_value(/atom-text-editor\s+\{.*?background-color:\s+(.*?);/mx.match(@base))
-        @options[:foreground] = get_hex_value(/atom-text-editor\s+\{.*?;.*?color:\s+(.*?);/mx.match(@base))
-        # more regex goes here to match every single element... maybe.
+        parse_options.each do |key, value|
+          
+        	color = get_hex_value(@base.match(value))
+        	
+        	@options[key] = color
+        	puts "#{key.to_s}: #{color}"
+        
+        end
+        
         return @options
     end
 
