@@ -5,6 +5,7 @@ class AtomInputController
   
     def initialize(directory_path)
         @directory_path = directory_path
+        @package = File.read("#{@directory_path}/package.json")
         @options = {}
         @color_hash = {}
         `coyote '#{@directory_path}/index.less:#{@directory_path}/output.less'`
@@ -28,7 +29,7 @@ class AtomInputController
     private
     
     def get_theme_name
-      package.scan(/"name":\s"(.*?)"\,.*?"theme":\s"syntax"/mx) do |m|
+      @package.scan(/"name":\s"(.*?)"\,.*?"theme":\s"syntax"/mx) do |m|
         @options[:theme_name] = m[0]
       end
     end

@@ -14,11 +14,11 @@
 				<key>caret</key>
 				<string>":::caret:::"</string>
 				<key>foreground</key>
-				<string>":::foreground:::"</string>
+				<string>":::foreground:::"</string>
 				<key>invisibles</key>
-				<string>":::invisibles:::"</string>
+				<string>":::invisibles:::"</string>
 				<key>lineHighlight</key>
-				<string>":::lineHighlight:::"</string>
+				<string>":::lineHighlight:::"</string>
 				<key>selection</key>
 				<string>#49483E</string>
 				<key>findHighlight</key>
@@ -53,7 +53,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::comment_foreground:::"</string>
+				<string>":::comment_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -64,7 +64,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::string_foreground:::"</string>
+				<string>":::string_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -75,7 +75,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::number_foreground:::"</string>
+				<string>":::number_foreground:::"</string>
 			</dict>
 		</dict>
 
@@ -87,7 +87,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::built_in_constant_foreground:::"</string>
+				<string>":::built_in_constant_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -98,7 +98,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::user_defined_constant_foreground:::"</string>
+				<string>":::user_defined_constant_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -109,9 +109,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::variable_font_style:::"</string>
+				<string>":::variable_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::variable_foreground:::"</string>
+				<string>":::variable_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -122,7 +122,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::keyword_foreground:::"</string>
+				<string>":::keyword_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -133,7 +133,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::java_script_dollar_foreground:::"</string>
+				<string>":::java_script_dollar_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -146,7 +146,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>":::storage_foreground:::"</string>
+				<string>":::storage_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -157,9 +157,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::storage_type_font_style:::"</string>
+				<string>":::storage_type_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::storage_type_foreground:::"</string>
+				<string>":::storage_type_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -170,9 +170,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::entity_name_font_style:::"</string>
+				<string>":::entity_name_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::entity_name_foreground:::"</string>
+				<string>":::entity_name_foreground:::"</string>
 			</dict>
 		</dict>
 		
@@ -184,9 +184,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::inherited_class_font_style:::"</string>
+				<string>":::inherited_class_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::inherited_class_foreground:::"</string>
+				<string>":::inherited_class_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -197,9 +197,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::function_argument_font_style:::"</string>
+				<string>":::function_argument_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::function_argument_foreground:::"</string>
+				<string>":::function_argument_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -210,9 +210,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::language_variable_font_style:::"</string>
+				<string>":::language_variable_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::language_variable_foreground:::"</string>
+				<string>":::language_variable_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -223,9 +223,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::tag_name_font_style:::"</string>
+				<string>":::tag_name_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::tag_name_foreground:::"</string>
+				<string>":::tag_name_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -236,9 +236,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::tag_attribute_font_style:::"</string>
+				<string>":::tag_attribute_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::tag_attribute_foreground:::"</string>
+				<string>":::tag_attribute_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -249,9 +249,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::function_call_font_style:::"</string>
+				<string>":::function_call_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::function_call_foreground:::"</string>
+				<string>":::function_call_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -262,9 +262,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::library_function_font_style:::"</string>
+				<string>":::library_function_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::library_function_foreground:::"</string>
+				<string>":::library_function_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -275,9 +275,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::library_constant_font_style:::"</string>
+				<string>":::library_constant_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::library_constant_foreground:::"</string>
+				<string>":::library_constant_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -288,9 +288,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::library_class_type_font_style:::"</string>
+				<string>":::library_class_type_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::library_class_type_font_style:::"</string>
+				<string>":::library_class_type_font_style:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -301,9 +301,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>":::library_variable_font_style:::"</string>
+				<string>":::library_variable_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::library_variable_foreground:::"</string>
+				<string>":::library_variable_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -314,11 +314,11 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>":::invalid_background:::"</string>
+				<string>":::invalid_background:::"</string>
 				<key>fontStyle</key>
-				<string>":::invalid_font_style:::"</string>
+				<string>":::invalid_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::invalid_foreground:::"</string>
+				<string>":::invalid_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -329,9 +329,9 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>":::invalid_deprecated_background:::"</string>
+				<string>":::invalid_deprecated_background:::"</string>
 				<key>foreground</key>
-				<string>":::invalid_deprecated_foreground:::"</string>
+				<string>":::invalid_deprecated_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -342,7 +342,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::json_string_foreground:::"</string>
+				<string>":::json_string_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -353,7 +353,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::yaml_string_foreground:::"</string>
+				<string>":::yaml_string_foreground:::"</string>
 			</dict>
 		</dict>
 
@@ -365,7 +365,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::diff_header_foreground:::"</string>
+				<string>":::diff_header_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -376,7 +376,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::diff_deleted_foreground:::"</string>
+				<string>":::diff_deleted_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -387,7 +387,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::diff_inserted_foreground:::"</string>
+				<string>":::diff_inserted_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -398,7 +398,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::diff_changed_foreground:::"</string>
+				<string>":::diff_changed_foreground:::"</string>
 			</dict>
 		</dict>
 
@@ -408,7 +408,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::constant_numeric_line_number_find_in_files___match_foreground:::"</string>
+				<string>":::constant_numeric_line_number_find_in_files___match_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>
@@ -417,7 +417,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::entity_name_filename_foreground:::"</string>
+				<string>":::entity_name_filename_foreground:::"</string>
 			</dict>
 		</dict>
 
@@ -427,7 +427,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>":::message_error_foreground:::"</string>
+				<string>":::message_error_foreground:::"</string>
 			</dict>
 		</dict>
 

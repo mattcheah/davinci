@@ -21,11 +21,10 @@ class SublimeOutputController
     end
     
     def insert_styles
-        @base = File.read("output/newTheme.tmTheme")
-        @options.each do |key, value|
-            print "."
-            @base.gsub!(/":::#{key.to_s}:::"/, value)
-        end
+        
+        @base = File.read(@filename)
+        replace_options
+        clean_up_leftovers
         
         File.open(@filename, 'w') { |f| f.write(@base) }
         
@@ -34,6 +33,19 @@ class SublimeOutputController
     
     private
 
+    def replace_options
+        @options.each do |key, value|
+            print "."
+            @base.gsub!(/":::#{key.to_s}:::"/, value)
+        end
+    end
+    
+    def clean_up_leftovers
+        @base.gsub!(/":::.*?_font_style:::"/, "")
+        @base.gsub!(/":::.*?_background:::"/, "")
+        @base.gsub!(/":::.*?_foreground:::"/, @options[:foreground])
+        @base.gsub!(/":::.*?:::"/, @options[:foreground])
+    end
     
     
 end
