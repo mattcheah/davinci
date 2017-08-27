@@ -76,7 +76,7 @@ class AtomOutputController
         date = Date.today()
         
         changelog_text = "## 0.1.0 - First Release
-*  #{@options[:theme_name]} Theme Translated to Atom on #{date.month}/#{date.mday}/#{date.year}, by Color-Scheme-Translate (https://github.com/mattcheah/Color-Scheme-Translate)"
+*  #{@options[:theme_name]} Theme Translated to Atom on #{date.month}/#{date.mday}/#{date.year}, by DaVinci-Text (https://github.com/mattcheah/DaVinci-Text)"
         
         File.open("output/CHANGELOG.MD", "w") { |f| f.write(changelog_text) }
     end
