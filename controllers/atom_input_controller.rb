@@ -1,7 +1,7 @@
 require "pp"
 
 class AtomInputController
-    attr_accessor :options
+    attr_accessor :options, :package
   
     def initialize(directory_path)
         @directory_path = directory_path

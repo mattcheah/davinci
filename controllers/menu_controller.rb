@@ -122,11 +122,11 @@ class MenuController
             return
         end
 
-        if @to_editor == @from_editor
-            puts "That's the editor you started with! Pick a different editor."
-            get_to_editor
-            return
-        end
+        # if @to_editor == @from_editor
+        #     puts "That's the editor you started with! Pick a different editor."
+        #     get_to_editor
+        #     return
+        # end
 
         translate_to_output
 
