@@ -1,4 +1,5 @@
 require_relative '../../controllers/atom_output_controller.rb'
+require_relative '../../controllers/atom_input_controller.rb'
 require_relative '../../lib/utility.rb'
 
 require 'byebug'
@@ -43,21 +44,24 @@ describe AtomOutputController do
     
     describe "insert_styles" do
        
-      before do
-          @controller.insert_styles
-      end
+        before do
+            @controller.insert_styles
+            @input_controller = AtomInputController.new("output")
+            @input_controller.parse_atom_less
+        end
+      
+      
+        it "outputs the theme name" do
+            expect(@input_controller.options[:theme_name]).to eq "Monokai" 
+        end
        
-    #   it "parses the theme name" do
-    #       expect(@controller.options[:theme_name]).to eq "atom-dark-syntax" 
-    #   end
-       
-    #   it "parses the main colors" do  
-    #       expect(@controller.options[:foreground]).to eq "#c5c8c6"
-    #       expect(@controller.options[:background]).to eq "1d1f21asdasd"
-    #       expect(@controller.options[:comment_foreground]).to eq "#7C7C7C"
-    #       expect(@controller.options[:string_foreground]).to eq "#A8FF60"
-    #       expect(@controller.options[:number_foreground]).to eq "#FF73FD"
-    #   end
+        it "parses the main colors" do  
+            expect(@input_controller.options[:foreground]).to eq "#F8F8F2"
+            expect(@input_controller.options[:background]).to eq "#272822"
+            expect(@input_controller.options[:comment_foreground]).to eq "#75715E"
+            expect(@input_controller.options[:string_foreground]).to eq "#E6DB74"
+            expect(@input_controller.options[:number_foreground]).to eq "#AE81FF"
+        end
         
     end
 

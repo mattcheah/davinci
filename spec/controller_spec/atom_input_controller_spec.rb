@@ -31,7 +31,7 @@ describe AtomInputController do
        
        it "parses the main colors" do  
           expect(@controller.options[:foreground]).to eq "#c5c8c6"
-          expect(@controller.options[:background]).to eq "1d1f21asdasd"
+          expect(@controller.options[:background]).to eq "#1d1f21"
           expect(@controller.options[:comment_foreground]).to eq "#7C7C7C"
           expect(@controller.options[:string_foreground]).to eq "#A8FF60"
           expect(@controller.options[:number_foreground]).to eq "#FF73FD"

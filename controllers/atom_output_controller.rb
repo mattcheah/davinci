@@ -40,8 +40,10 @@ class AtomOutputController
         syntax_array = ["foreground", "background", "selection", "active_guide", "invisibles", "find_highlight", "diff_header_foreground", "diff_inserted_foreground", "diff_changed_foreground", "diff_deleted_foreground"]
 
         syntax_array.each do |opt|
-            print "."
-            @syntax_variables.gsub!(/":::#{opt}:::"/, @options[opt.to_sym])
+            if @options.key?(opt.to_sym)
+                print "."
+                @syntax_variables.gsub!(/":::#{opt}:::"/, @options[opt.to_sym])
+            end
         end
         
         File.open("output/styles/syntax-variables.less", 'w') { |f| f.write(@syntax_variables) }

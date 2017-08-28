@@ -21,8 +21,8 @@ class AtomInputController
 
       puts "done!"
       puts ""
-      # puts "options:"
-      # pp @options
+      puts "options:"
+      pp @options
 
     end
 
@@ -82,7 +82,7 @@ class AtomInputController
         	color = get_hex_value(@base.match(value))
         	
         	@options[key] = color
-        	puts "#{key.to_s}: #{color}"
+        # 	puts "#{key.to_s}: #{color}"
         
         end
         
@@ -90,10 +90,12 @@ class AtomInputController
     end
 
     def get_hex_value(options_match)
-        if options_match[1][0] == '@'
-            return @color_hash[options_match[1].underscore.to_sym]
-        else
-            return options_match[1]
+        if options_match
+          if options_match[1][0] == '@'
+              return @color_hash[options_match[1].underscore.to_sym]
+          else
+              return options_match[1]
+          end
         end
     end
 end
