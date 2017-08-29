@@ -1,7 +1,7 @@
 require "pp"
 
 class AtomInputController
-    attr_accessor :options, :package
+    attr_accessor :options
   
     def initialize(directory_path)
         @directory_path = directory_path
@@ -18,11 +18,11 @@ class AtomInputController
       get_theme_name
       parse_colors
       get_base_options
-
+ 
       puts "done!"
       puts ""
-      puts "options:"
-      pp @options
+      # puts "options:"
+      # pp @options
 
     end
 
@@ -48,33 +48,37 @@ class AtomInputController
         @color_hash[m[0].underscore.to_sym] = color
         print "."
       end
-
+      
     end
 
     def get_base_options
       
         parse_options = {
-          foreground: /atom-text-editor.*?color:\s*([\#|\@|rgb].*?);.*?\}/mx,
-          background: /atom-text-editor.*?background-color:\s*(\#.*?);/mx,
-          caret: /atom-text-editor.*?cursor.*?\{.*?color:\s*(\#.*?);/mx,
-          invisibles: /invisible-character.*?\{.*?color:\s*(\#.*?);/mx,
-          line_highlight: /\.line-number\.cursor-line.*?\{.*?background-color:\s*(\#.*?);/mx,
-          comment_foreground: /\.syntax--comment.*?\{.*?color:\s*(\#.*?);/mx,
-          string_foreground: /\.syntax--string.*?\{.*?color:\s*(\#.*?);/mx,
-          number_foreground: /\.syntax--constant.*?syntax--numeric.*?\{.*?color:\s*(\#.*?);/mx,
-          build_in_constant_foreground: /\.syntax--constant.*?\{.*?color:\s*(\#.*?);/mx,
-          user_defined_constant_foreground: /\.syntax--constant.*?\{.*?color:\s*(\#.*?);/mx,
-          variable_foreground: /\.syntax--variable.*?\{.*?color:\s*(\#.*?);/mx,
-          keyword_foreground: /\.syntax--keyword.*?\{.*?color:\s*(\#.*?);/mx,
-          storage_type_foreground: /\.syntax--storage.*?\{.*?color:\s*(\#.*?);/mx,
-          entity_name_foreground: /syntax--class.*?\{.*?color:\s*(\#.*?);/mx,
-          function_argument_foreground: /syntax--function.*?\{.*?color:\s*(\#.*?);/mx,
-          tag_name_foreground: /syntax--tag.*?\{.*?color:\s*(\#.*?);/mx,
-          tag_attribute_foreground: /syntax--attribute-name.*?\{.*?color:\s*(\#.*?);/mx,
-          function_call_foreground: /syntax--function.*?\{.*?color:\s*(\#.*?);.*?\}/mx,
-          library_function_foreground: /syntax--function.*?\{.*?color:\s*(\#.*?);/mx,
-          invalid_foreground: /syntax--illegal.*?\{.*?color:\s*(\#.*?);/mx,
-          invalid_background: /syntax--illegal.*?\{.*?background-color:\s*(\#.*?);/mx,
+          foreground: /atom-text-editor.*?^\s*[^background-]color:\s*(.*?);.*?}/mx,
+          background: /atom-text-editor.*?background-color:\s*(.*?);/mx,
+          caret: /atom-text-editor.*?\s*cursor\s*{.*?color:\s*(.*?);/mx,
+          invisibles: /atom-text-editor.*?invisible-character.*?\{.*?color:\s*(.*?)/mx,
+          line_highlight: /\.line-number\.cursor-line.*?\{.*?background-color:\s*(.*?);/mx,
+          selection: /\.selection.*?\.region\s*?{.*?color:\s*(.*?);/mx,
+          brackets_foreground: /\.bracket-matcher\s*?\.region.*?border-bottom:\s*?[0-9]*px\s*?(?:solid|dotted|dashed)\s+?(.*?);/mx,
+          bracket_contents_foreground: /\.bracket-matcher\s*?\.region.*?border-bottom:\s*?[0-9]*px\s*?(?:solid|dotted|dashed)\s+?(.*?);/mx,
+          comment_foreground: /\.syntax--comment.*?\{.*?color:\s*(.*?);/mx,
+          string_foreground: /^\.syntax--string\s*{\n?\s+color:\s*(.*?);$/mx,
+          number_foreground: /\.syntax--constant.*?syntax--numeric.*?\{.*?color:\s*(.*?);/mx,
+          build_in_constant_foreground: /\.syntax--constant.*?\{.*?color:\s*(.*?);/mx,
+          user_defined_constant_foreground: /\.syntax--constant.*?\{.*?color:\s*(.*?);/mx,
+          variable_foreground: /\.syntax--variable.*?\{.*?color:\s*(.*?);/mx,
+          keyword_foreground: /\.syntax--keyword.*?\{.*?color:\s*(.*?);/mx,
+          storage_foreground: /\.syntax--storage.*?\{.*?color:\s*(.*?);/mx,
+          storage_type_foreground: /\.syntax--storage.*?\.syntax--modifier.*?\{.*?color:\s*(.*?);/mx,
+          entity_name_foreground: /^\.syntax--entity.*?\.syntax--type.*?color:\s*(.*?);/mx,
+          function_argument_foreground: /syntax--function.*?\{.*?color:\s*(.*?);/mx,
+          tag_name_foreground: /\.syntax--entity\.syntax--name\.syntax--tag.*?{.*?color:\s*(.*?);/mx,
+          tag_attribute_foreground: /\.syntax--other\.syntax--attribute-name.*?\{.*?color:\s*(.*?);/mx,
+          function_call_foreground: /syntax--function.*?\{.*?color:\s*(.*?);.*?\}/mx,
+          library_function_foreground: /syntax--function.*?\{.*?color:\s*(.*?);/mx,
+          invalid_foreground: /syntax--illegal.*?\{.*?color:\s*(.*?);/mx,
+          invalid_background: /syntax--illegal.*?\{.*?background-color:\s*(.*?);/mx,
         }
         
         parse_options.each do |key, value|

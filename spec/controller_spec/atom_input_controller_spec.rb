@@ -14,7 +14,7 @@ describe AtomInputController do
         end
         
         it "reads the package.json file into a package variable" do
-            expect(@controller.package).to_not eq ""
+            expect(@controller.instance_variable_get("@package")).to_not eq ""
         end
     
     end

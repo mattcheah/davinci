@@ -44,7 +44,7 @@ class SublimeInputController
         
         puts "done!"
         puts ""
-        pp @options
+        # pp @options
         
         
     end
