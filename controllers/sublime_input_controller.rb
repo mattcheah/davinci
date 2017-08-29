@@ -16,7 +16,7 @@ class SublimeInputController
         # @from_editor_specific_information = {}
     end
     
-    def parse_sublime_xml
+    def parse_input_files
         @options[:theme_name] = @xml.xpath("//plist/dict/*[1]/following-sibling::string[1]/text()").text
         
         all_settings = @xml.xpath('//dict/array/dict')

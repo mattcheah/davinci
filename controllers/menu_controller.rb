@@ -21,9 +21,9 @@ class MenuController
         puts ""
         puts "What Text Editor are you currently using?"
         puts "(1) Sublime"
-        puts "(2) Dreamweaver"
-        puts "(3) Atom"
-        puts "(4) Brackets"
+        puts "(2) Atom"
+        # puts "(3) Dreamweaver"
+        # puts "(4) Brackets"
 
         get_from_editor
     end
@@ -42,28 +42,27 @@ class MenuController
                 @from_editor = "sublime"
                 puts "Enter the full filepath of your Sublime tmTheme syntax color file."
                 puts "If you do not know where this can be found, please read the documentation."
-                # filepath = gets.chomp
-                filepath = "example_files/sublime/monokai.tmTheme"
+                filepath = gets.chomp
+                # filepath = "example_files/sublime/monokai.tmTheme"
                 @input_controller = SublimeInputController.new(filepath)
-                
             when "2"
-                @from_editor = "dreamweaver"
-                puts "Enter the full filepath of your Dreamweaver _____ file."
-                puts "If you do not know where this can be found, please read the documentation."
-                @input_controller = DreamweaverInputController.new(gets.chomp)
-            when "3"
                 @from_editor = "atom"
-                puts "Enter the full filepath of your Atom _____ file."
+                puts "Enter the full filepath of your Atom theme directory"
                 puts "If you do not know where this can be found, please read the documentation."
-                # @input_controller = AtomInputController.new(gets.chomp)
-                @input_controller = AtomInputController.new("example_files/atom")
-            when "4"
-                @from_editor = "brackets"
-                puts "Enter the full filepath of your Brackets _____ file."
-                puts "If you do not know where this can be found, please read the documentation."
-                @input_controller = BracketsInputController.new(gets.chomp)
+                @input_controller = AtomInputController.new(gets.chomp)
+                # @input_controller = AtomInputController.new("example_files/atom")
+            # when "3"
+            #     @from_editor = "dreamweaver"
+            #     puts "Enter the full filepath of your Dreamweaver _____ file."
+            #     puts "If you do not know where this can be found, please read the documentation."
+            #     @input_controller = DreamweaverInputController.new(gets.chomp)
+            # when "4"
+            #     @from_editor = "brackets"
+            #     puts "Enter the full filepath of your Brackets _____ file."
+            #     puts "If you do not know where this can be found, please read the documentation."
+            #     @input_controller = BracketsInputController.new(gets.chomp)
             else
-                puts "You did not choose one of the 4 options."
+                puts "You did not choose one of the 2 options."
                 start_menu
                 return
             end
@@ -75,21 +74,13 @@ class MenuController
             
         end
 
-        # @from_editor = "sublime"
-        # @syntax = SyntaxInformation.new("example_files/monofly.tmTheme")
-
         parse_file
     end
 
     def parse_file
         print "parsing file"
         print "."
-        case @from_editor
-        when "sublime"
-            @input_controller.parse_sublime_xml
-        when "atom"
-            @input_controller.parse_atom_less
-        end
+        @input_controller.parse_input_files
 
         get_to_editor
 
@@ -100,8 +91,8 @@ class MenuController
         puts "What editor would you like to move your color scheme to?"
         puts "(1) Sublime"
         puts "(2) Dreamweaver"
-        puts "(3) Atom"
-        puts "(4) Brackets"
+        # puts "(3) Atom"
+        # puts "(4) Brackets"
 
         selection = gets.chomp
 
@@ -110,23 +101,23 @@ class MenuController
             @to_editor = "sublime"
             @output_controller = SublimeOutputController.new(@input_controller.options)
         when "2"
-            @to_editor = "dreamweaver"
-        when "3"
             @to_editor = "atom"
             @output_controller = AtomOutputController.new(@input_controller.options)
-        when "4"
-            @to_editor = "brackets"
+        # when "3"
+        #     @to_editor = "dreamweaver"
+        # when "4"
+        #     @to_editor = "brackets"
         else
-            puts "You did not choose one of the 4 options."
+            puts "You did not choose one of the 2 options."
             get_to_editor
             return
         end
 
-        # if @to_editor == @from_editor
-        #     puts "That's the editor you started with! Pick a different editor."
-        #     get_to_editor
-        #     return
-        # end
+        if @to_editor == @from_editor
+            puts "That's the editor you started with! Pick a different editor."
+            get_to_editor
+            return
+        end
 
         translate_to_output
 

@@ -11,7 +11,7 @@ class AtomInputController
         `coyote '#{@directory_path}/index.less:#{@directory_path}/output.less'`
     end
      
-    def parse_atom_less
+    def parse_input_files
 
       @base = File.read("#{@directory_path}/output.less")
 

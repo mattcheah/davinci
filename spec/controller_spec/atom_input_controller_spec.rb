@@ -22,7 +22,7 @@ describe AtomInputController do
     describe ".parse_atom_less" do
        
        before do
-           @controller.parse_atom_less
+           @controller.parse_input_files
        end
        
        it "parses the theme name" do

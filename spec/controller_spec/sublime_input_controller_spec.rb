@@ -16,7 +16,7 @@ describe SublimeInputController do
     describe "parse_sublime_xml" do
         
         before do
-            @controller.parse_sublime_xml
+            @controller.parse_input_files
         end
     
         it "parses the primary styles correctly" do
