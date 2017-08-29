@@ -290,7 +290,7 @@
 				<key>fontStyle</key>
 				<string>":::library_class_type_font_style:::"</string>
 				<key>foreground</key>
-				<string>":::library_class_type_font_style:::"</string>
+				<string>":::library_class_type_foreground:::"</string>
 			</dict>
 		</dict>
 		<dict>

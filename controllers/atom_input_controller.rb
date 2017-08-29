@@ -69,14 +69,15 @@ class AtomInputController
           user_defined_constant_foreground: /\.syntax--constant.*?\{.*?color:\s*(.*?);/mx,
           variable_foreground: /\.syntax--variable.*?\{.*?color:\s*(.*?);/mx,
           keyword_foreground: /\.syntax--keyword.*?\{.*?color:\s*(.*?);/mx,
-          storage_foreground: /\.syntax--storage.*?\{.*?color:\s*(.*?);/mx,
-          storage_type_foreground: /\.syntax--storage.*?\.syntax--modifier.*?\{.*?color:\s*(.*?);/mx,
-          entity_name_foreground: /^\.syntax--entity.*?\.syntax--type.*?color:\s*(.*?);/mx,
-          function_argument_foreground: /syntax--function.*?\{.*?color:\s*(.*?);/mx,
+          storage_foreground: /\.syntax--storage.*?\.syntax--modifier.*?\{.*?color:\s*(.*?);/mx,
+          storage_type_foreground: /\.syntax--storage.*?\{.*?color:\s*(.*?);/mx,
+          entity_name_foreground: /^\.syntax--entity.*?color:\s*(.*?);/mx,
+          function_argument_foreground: /syntax--support.*?\{.*?color:\s*(.*?);/mx,
           tag_name_foreground: /\.syntax--entity\.syntax--name\.syntax--tag.*?{.*?color:\s*(.*?);/mx,
           tag_attribute_foreground: /\.syntax--other\.syntax--attribute-name.*?\{.*?color:\s*(.*?);/mx,
           function_call_foreground: /syntax--function.*?\{.*?color:\s*(.*?);.*?\}/mx,
           library_function_foreground: /syntax--function.*?\{.*?color:\s*(.*?);/mx,
+          library_class_type_foreground: /syntax--support\s*\{.*?color:\s*(.*?);/mx,
           invalid_foreground: /syntax--illegal.*?\{.*?color:\s*(.*?);/mx,
           invalid_background: /syntax--illegal.*?\{.*?background-color:\s*(.*?);/mx,
         }
@@ -89,6 +90,7 @@ class AtomInputController
         # 	puts "#{key.to_s}: #{color}"
         
         end
+        
         
         return @options
     end

@@ -5,6 +5,7 @@ class SublimeOutputController
    
     def initialize(options)
         @options = options
+        byebug
         @filename = "output/#{@options[:theme_name]}.tmTheme"
     end
     
@@ -17,7 +18,7 @@ class SublimeOutputController
         FileUtils.chmod(0755, "#{current_dir}/output/")
         
         FileUtils.cp_r("#{current_dir}/lib/templates/sublime/.", "#{current_dir}/output/")
-        FileUtils.mv("#{current_dir}/output/newTheme.tmTheme", "#{current_dir}/#{@filename}")
+        File.rename("output/newTheme.tmTheme", @filename)
     end
     
     def insert_styles
@@ -25,7 +26,6 @@ class SublimeOutputController
         @base = File.read(@filename)
         replace_options
         clean_up_leftovers
-        
         File.open(@filename, 'w') { |f| f.write(@base) }
         
         puts "done!"
@@ -38,6 +38,7 @@ class SublimeOutputController
             print "."
             @base.gsub!(/":::#{key.to_s}:::"/, value)
         end
+        
     end
     
     def clean_up_leftovers
