@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+gemspec
+
+# gem 'coyote'
+# gem 'nokogiri'
+# gem 'byebug'
+# gem 'rspec'
