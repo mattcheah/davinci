@@ -9,7 +9,7 @@ class MenuController
     def initialize
         puts "##### Color Scheme Translator #####"
         puts ""
-        puts "Takes a XML/CSS/Less/JSON document from your text-editor that specifies syntax colors and outputs a formatted document that is compatible with the text editor you are switching to."
+        puts "Takes a XML/CSS/Less document from your text-editor that specifies syntax colors and outputs a formatted document that is compatible with the text editor you are switching to."
 
         @from_editor = ""
         @to_editor = ""
@@ -43,14 +43,13 @@ class MenuController
                 puts "Enter the full filepath of your Sublime tmTheme syntax color file."
                 puts "If you do not know where this can be found, please read the documentation."
                 filepath = gets.chomp
-                # filepath = "example_files/sublime/monokai.tmTheme"
                 @input_controller = SublimeInputController.new(filepath)
             when "2"
                 @from_editor = "atom"
                 puts "Enter the full filepath of your Atom theme directory"
                 puts "If you do not know where this can be found, please read the documentation."
-                @input_controller = AtomInputController.new(gets.chomp)
-                # @input_controller = AtomInputController.new("example_files/atom")
+                filepath = gets.chomp
+                @input_controller = AtomInputController.new(filepath)
             # when "3"
             #     @from_editor = "dreamweaver"
             #     puts "Enter the full filepath of your Dreamweaver _____ file."
@@ -68,8 +67,11 @@ class MenuController
             end
             
         rescue
-            
+            puts ""
             puts "This file path was not valid. Please enter your file path again."
+            if filepath[0] == "/"
+                puts "Did you mean to include a / at the beginning of your path?"
+            end
             return get_from_editor(selection)
             
         end
@@ -90,8 +92,8 @@ class MenuController
         puts ""
         puts "What editor would you like to move your color scheme to?"
         puts "(1) Sublime"
-        puts "(2) Dreamweaver"
-        # puts "(3) Atom"
+        puts "(2) Atom"
+        # puts "(3) Dreamweaver"
         # puts "(4) Brackets"
 
         selection = gets.chomp
