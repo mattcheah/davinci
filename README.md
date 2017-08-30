@@ -16,31 +16,43 @@ You are now ready to use Davinci.
 After instaling davinci, run it by simply typing `davinci` in the command line and follow the instructions.
 A command line prompt will show, asking you to choose the text editor you want to transfer your theme from. 
 
-    What Text Editor are you currently using?
+    ```What Text Editor are you currently using?
     (1) Sublime
     (2) Atom
-    > 1
+    > 1```
 
-Enter 1 or 2 to select your text editor. The system will then ask for the theme file or theme folder. To figure out where this is, see the #Reference section.
+Enter 1 or 2 to select your text editor. The system will then ask for the theme file or theme folder. 
+To figure out where this is, see the #Reference section.
 You may also use the example_files directory, which contains the default Atom theme "Atom-Dark-Syntax", and the default Sublime theme "Monokai".  
 
-    Enter the full filepath of your Sublime tmTheme syntax color file.
+    ```Enter the full filepath of your Sublime tmTheme syntax color file.
     If you do not know where this can be found, please read the documentation.
-    > /example_files/sublime/monokai.tmTheme
+    > /example_files/sublime/monokai.tmTheme````
     
-Enter the path to your theme file or directory. The system will ask for an output text editor. At this point in development your only other option is the opposite of what you originally chose. 
+Enter the path to your theme file or directory. The system will ask for an output text editor.
 
-    What editor would you like to move your color scheme to?
+    ```What editor would you like to move your color scheme to?
     (1) Sublime
     (2) Atom
-    > 2
+    > 2```
     
 The system will output the parsed options into a theme template for your output text editor and place the file(s) into the /output/ folder. 
 To add this newly created theme to your text editor, read the #Reference section. 
 
-To exit at any time, press ctrl+c
+To exit the program any time, press ctrl+c
 
 ## Warnings
+
+Sublime Text themes are parsed using [Nokogiri](https://github.com/sparklemotion/nokogiri), an HTML/XML parser. Atom theme files (.less) are combined into one file using [Coyote](https://github.com/xorcery/coyote) and then parsed using regex.
+Both of these parsing methods can be potentially unreliable depending on the scopes assigned to the colors in the Sublime XML file, or the combination of Less selectors in the Atom combined file. 
+
+This is further complicated by the fact that editors do not always categorize the same code in the same way. As an example, the `System` in the following Java code
+
+    `System.out.println("Hello World!");`
+
+is categorized as a "Storage Type" keyword, usually reserved for keywords that affect the storage of an item (eg. __void__ in Java). However, in Atom, `System` is given a class of `"syntax--variable syntax--other syntax--object syntax--java"`. The most common of these classes would be `syntax--variable`, meaning that even if colors from other classes are parsed (they're not), the color would not necessarily show up the same when transferring between Atom and Sublime.  
+
+All this to say that the process is unstable and you may have to do a little bit of clean-up work on your resulting theme-files. I have found, however, that the overall look and feel of the theme is preserved.
 
 ## Reference
 
