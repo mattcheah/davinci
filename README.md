@@ -16,25 +16,25 @@ You are now ready to use Davinci.
 After instaling davinci, run it by simply typing `davinci` in the command line and follow the instructions.
 A command line prompt will show, asking you to choose the text editor you want to transfer your theme from. 
 
-    ```What Text Editor are you currently using?
+    What Text Editor are you currently using?
     (1) Sublime
     (2) Atom
-    > 1```
+    > 1
 
 Enter 1 or 2 to select your text editor. The system will then ask for the theme file or theme folder. 
 To figure out where this is, see the #Reference section.
 You may also use the example_files directory, which contains the default Atom theme "Atom-Dark-Syntax", and the default Sublime theme "Monokai".  
 
-    ```Enter the full filepath of your Sublime tmTheme syntax color file.
+    Enter the full filepath of your Sublime tmTheme syntax color file.
     If you do not know where this can be found, please read the documentation.
-    > /example_files/sublime/monokai.tmTheme````
+    > /example_files/sublime/monokai.tmTheme
     
 Enter the path to your theme file or directory. The system will ask for an output text editor.
 
-    ```What editor would you like to move your color scheme to?
+    What editor would you like to move your color scheme to?
     (1) Sublime
     (2) Atom
-    > 2```
+    > 2
     
 The system will output the parsed options into a theme template for your output text editor and place the file(s) into the /output/ folder. 
 To add this newly created theme to your text editor, read the #Reference section. 
@@ -47,7 +47,7 @@ Theme files are parsed by an XML Parser or by Regex. Both of these parsing metho
 
 This is further complicated by the fact that editors do not always categorize the same code in the same way. As an example, the `System` in the following Java code
 
-    `System.out.println("Hello World!");`
+    System.out.println("Hello World!");
 
 is categorized in Sublime as a "Storage Type" keyword, usually reserved for keywords that affect the storage of an item (eg. __void__ in Java). However, in Atom, `System` is given the classes `"syntax--variable syntax--other syntax--object syntax--java"`. The most common of these classes would be `syntax--variable`, meaning that even if colors from other classes are parsed (they're not), the color would not necessarily show up the same when transferring between Atom and Sublime.  
 
@@ -62,22 +62,22 @@ Atom theme files (.less) are combined into one file using [Coyote](https://githu
 
 Once these files are parsed, the colors for categories of code are slotted into an options hash which looks similar to this: 
 
-    ```@options{
+    @options{
         :foreground => "#000000" // Primary Text Color is Black
         :background => "#FFFFFF" // Primary Background Color is White
         :comment_foreground => "#555555" // Comment color is grey
         :number_foreground => "#FF0000" // Number/Integer color is red
         :string_foreground => "#00FF00" // String color is green
-    }```
+    }
     
 Once the input theme has been parsed and the options hash is full, davinci will clone a template for your output theme and find/replace strings representing options with the actual colors, like so: 
 
-    ```<key>name</key>
+    <key>name</key>
 	<string>String</string>
 	<key>foreground</key>
-	<string>":::string_foreground:::"</string>```
+	<string>":::string_foreground:::"</string>
 	
-    `@template.gsub!(/":::string_foreground:::"/, "#00FF00")`
+    @template.gsub!(/":::string_foreground:::"/, "#00FF00")
 
 To see a list of options and where each color is set in each theme's file(s), view the [reference spreadsheet](https://docs.google.com/spreadsheets/d/1DqhOP7L2ApQSOU6tKnh1Bx-92pzY7-BJK2Yccf6wr-c/edit?usp=sharing). 
 
@@ -122,6 +122,16 @@ __WINDOWS__
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/mattcheah/davinci. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+### Support for new editors
+
+Contributors who would like to add support for a new editor should make sure their pull request contains the following: 
+* An Excel or CSV file adding a selector column for their new editor to the [reference sheet](https://docs.google.com/spreadsheets/d/1DqhOP7L2ApQSOU6tKnh1Bx-92pzY7-BJK2Yccf6wr-c/edit?usp=sharing). 
+* A controller for inputting and/or outputting hex codes to/from the options hash.
+* Rspec tests
+    * Input Controllers: Tests should confirm that an options hash contains the correct colors for the primary theme styles (:foreground, :background, :comment_foreground, :string_foreground, etc)
+    * Output Controllers: Tests should confirm that the colors from a given options hash show up correctly in the outputted file(s). If an input controller is provided, it can be used to confirm this. If not, the outputted file must be parsed manually. 
+* Updates to MenuController to include functionality.
 
 ## License
 
