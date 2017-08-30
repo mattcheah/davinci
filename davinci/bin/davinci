@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-require_relative "../controllers/menu_controller.rb"
-require "utility.rb"
-require "version.rb"
-
-menu = Davinci::MenuController.new()
-menu.start_menu
