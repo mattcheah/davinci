@@ -2,19 +2,22 @@ require 'fileutils'
 require 'date'
 
 class AtomOutputController 
-    def initialize(options)
+    def initialize(options, filepath)
+        @directory = filepath.split("/")[0..-2].join("/")
         @options = options
     end
     
     def duplicate_template_files
-        current_dir = FileUtils.pwd
+        current_dir = File.expand_path(__FILE__)
+        root_dir = current_dir.split("/")[0..-3].join("/")
+        @new_dir = "#{@directory}/#{@options[:theme_name]}/"
         
-        FileUtils.rm_rf("output/.", secure: true)
+        if File.directory?(@new_dir)
+            FileUtils.rm_rf(@new_dir, secure: true)
+        end
         
-        FileUtils.chmod(0755, "#{current_dir}/lib/templates/atom/")
-        FileUtils.chmod(0755, "#{current_dir}/output/")
-        
-        FileUtils.cp_r("#{current_dir}/lib/templates/atom/.", "#{current_dir}/output/")
+        FileUtils.chmod(0755, "#{root_dir}/lib/templates/atom/")
+        FileUtils.cp_r("#{root_dir}/lib/templates/atom/", @new_dir)
         
     end
     
@@ -30,9 +33,9 @@ class AtomOutputController
     private
     
     def read_files
-        @package = File.read("output/package.json")
-        @base = File.read("output/styles/base.less")
-        @syntax_variables = File.read("output/styles/syntax-variables.less")
+        @package = File.read("#{@new_dir}/package.json")
+        @base = File.read("#{@new_dir}/styles/base.less")
+        @syntax_variables = File.read("#{@new_dir}/styles/syntax-variables.less")
     end
     
     def insert_syntax_variables
@@ -46,14 +49,14 @@ class AtomOutputController
             end
         end
         
-        File.open("output/styles/syntax-variables.less", 'w') { |f| f.write(@syntax_variables) }
+        File.open("#{@new_dir}/styles/syntax-variables.less", 'w') { |f| f.write(@syntax_variables) }
     end
     
     def insert_package_info
         print "."
         
-        @package.gsub!(/:::theme_name:::/, @options[:theme_name])
-        File.open("output/package.json", 'w') { |f| f.write(@package) }
+        @package.gsub!(/:::theme_name:::/, "#{@options[:theme_name]}-syntax")
+        File.open("#{@new_dir}/package.json", 'w') { |f| f.write(@package) }
     end
     
     def insert_base_info
@@ -70,7 +73,7 @@ class AtomOutputController
         #     @base.gsub!(/":::#{opt}:::"/, @options[opt.to_sym])
         # end
     
-        File.open("output/styles/base.less", 'w') { |f| f.write(@base) }
+        File.open("#{@new_dir}/styles/base.less", 'w') { |f| f.write(@base) }
     end
     
     def insert_changelog_info
@@ -78,9 +81,9 @@ class AtomOutputController
         date = Date.today()
         
         changelog_text = "## 0.1.0 - First Release
-*  #{@options[:theme_name]} Theme Translated to Atom on #{date.month}/#{date.mday}/#{date.year}, by DaVinci-Text (https://github.com/mattcheah/DaVinci-Text)"
+*  #{@options[:theme_name]} Theme Translated to Atom on #{date.month}/#{date.mday}/#{date.year}, by DaVinci-Text (https://github.com/mattcheah/davinci)"
         
-        File.open("output/CHANGELOG.MD", "w") { |f| f.write(changelog_text) }
+        File.open("#{@new_dir}/CHANGELOG.MD", "w") { |f| f.write(changelog_text) }
     end
     
 end

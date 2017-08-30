@@ -25,19 +25,19 @@ describe AtomOutputController do
             :function_call_foreground=>"#66D9EF",
         }
         
-        @controller = AtomOutputController.new(@options)
+        gem_root = File.expand_path(__FILE__).split("/")[0..-4].join("/")
+        @folderpath = "#{gem_root}/example_files/sublime"
+        filepath = "#{gem_root}/example_files/sublime/monokai.tmTheme"
+        
+        @controller = AtomOutputController.new(@options, filepath)
         @controller.duplicate_template_files
     end
 
     describe "duplicate_template_files" do
-        
-        before do
-           FileUtils.rm_rf("output/.", secure: true) 
-        end
-        
-        it "moves template files to output/" do
-            expect(File.exist?("output/package.json"))
-            expect(File.exist?("output/index.less"))
+
+        it "moves template files to [THEME NAME] folder in the same directory" do
+            expect(File.exist?("#{@folderpath}/Monokai/package.json"))
+            expect(File.exist?("#{@folderpath}/Monokai/index.less"))
         end
     
     end
@@ -46,13 +46,13 @@ describe AtomOutputController do
        
         before do
             @controller.insert_styles
-            @input_controller = AtomInputController.new("output")
+            @input_controller = AtomInputController.new("#{@folderpath}/Monokai/")
             @input_controller.parse_input_files
         end
       
       
         it "outputs the theme name" do
-            expect(@input_controller.options[:theme_name]).to eq "Monokai" 
+            expect(@input_controller.options[:theme_name]).to eq "Monokai-syntax" 
         end
        
         it "parses the main colors" do  

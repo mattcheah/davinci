@@ -23,8 +23,6 @@ class AtomInputController
  
       puts "done!"
       puts ""
-      # puts "options:"
-      # pp @options
 
     end
 

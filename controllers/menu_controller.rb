@@ -42,14 +42,14 @@ class MenuController
                 @from_editor = "sublime"
                 puts "Enter the full filepath of your Sublime tmTheme syntax color file."
                 puts "If you do not know where this can be found, please read the documentation."
-                filepath = gets.chomp
-                @input_controller = SublimeInputController.new(filepath)
+                @filepath = gets.chomp
+                @input_controller = SublimeInputController.new(@filepath)
             when "2"
                 @from_editor = "atom"
                 puts "Enter the full filepath of your Atom theme directory"
                 puts "If you do not know where this can be found, please read the documentation."
-                filepath = gets.chomp
-                @input_controller = AtomInputController.new(filepath)
+                @filepath = gets.chomp
+                @input_controller = AtomInputController.new(@filepath)
             # when "3"
             #     @from_editor = "dreamweaver"
             #     puts "Enter the full filepath of your Dreamweaver _____ file."
@@ -69,7 +69,7 @@ class MenuController
         rescue
             puts ""
             puts "This file path was not valid. Please enter your file path again."
-            if filepath[0] == "/"
+            if @filepath[0] == "/"
                 puts "Did you mean to include a / at the beginning of your path?"
             end
             return get_from_editor(selection)
@@ -104,7 +104,7 @@ class MenuController
             @output_controller = SublimeOutputController.new(@input_controller.options)
         when "2"
             @to_editor = "atom"
-            @output_controller = AtomOutputController.new(@input_controller.options)
+            @output_controller = AtomOutputController.new(@input_controller.options, @filepath)
         # when "3"
         #     @to_editor = "dreamweaver"
         # when "4"
