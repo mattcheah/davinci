@@ -59,7 +59,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/mattch
 
 ### Support for new editors
 
-Contributors who would like to add support for a new editor should make sure their pull request contains the following: 
+Contributors who would like to add support for a new editor should make sure their pull requests contain the following: 
 * An Excel or CSV file adding a selector column for their new editor to the [reference sheet](https://docs.google.com/spreadsheets/d/1DqhOP7L2ApQSOU6tKnh1Bx-92pzY7-BJK2Yccf6wr-c/edit?usp=sharing). 
 * A controller for inputting and/or outputting hex codes to/from the options hash.
 * Rspec tests
