@@ -43,6 +43,7 @@ class MenuController
                 puts "Enter the full filepath of your Sublime tmTheme syntax color file."
                 puts "If you do not know where this can be found, please read the documentation."
                 @filepath = gets.chomp
+                
                 @input_controller = SublimeInputController.new(@filepath)
             when "2"
                 @from_editor = "atom"

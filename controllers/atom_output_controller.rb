@@ -27,8 +27,12 @@ class AtomOutputController
         read_files
         insert_package_info
         insert_syntax_variables
-        insert_base_info
+        write_base_info
         insert_changelog_info
+        cleanup_leftovers
+        
+        File.open("#{@new_dir}/styles/base.less", 'w') { |f| f.write(@base) }
+        File.open("#{@new_dir}/styles/syntax-variables.less", 'w') { |f| f.write(@syntax_variables) }
         puts "done!"
     end
     
@@ -51,7 +55,7 @@ class AtomOutputController
             end
         end
         
-        File.open("#{@new_dir}/styles/syntax-variables.less", 'w') { |f| f.write(@syntax_variables) }
+        
     end
     
     def insert_package_info
@@ -61,7 +65,7 @@ class AtomOutputController
         File.open("#{@new_dir}/package.json", 'w') { |f| f.write(@package) }
     end
     
-    def insert_base_info
+    def write_base_info
         
         # base_array = ["comment_foreground", "storage_foreground", "built_in_constant_foreground", "keyword_foreground", "language_variable_foreground", "function_argument_foreground", "invalid_deprecated_background", "invalid_deprecated_foreground", "string_foreground", "comment_foreground", "inherited_class_foreground", "function_call_foreground", "library_class_type_foreground", "inherited_class_foreground", "tag_name_foreground", "tag_attribute_foreground", "entity_name_foreground"]
         
@@ -75,7 +79,7 @@ class AtomOutputController
         #     @base.gsub!(/":::#{opt}:::"/, @options[opt.to_sym])
         # end
     
-        File.open("#{@new_dir}/styles/base.less", 'w') { |f| f.write(@base) }
+        
     end
     
     def insert_changelog_info
@@ -86,6 +90,16 @@ class AtomOutputController
 *  #{@options[:theme_name]} Theme Translated to Atom on #{date.month}/#{date.mday}/#{date.year}, by DaVinci-Text (https://github.com/mattcheah/davinci)"
         
         File.open("#{@new_dir}/CHANGELOG.MD", "w") { |f| f.write(changelog_text) }
+    end
+    
+    def cleanup_leftovers
+        
+        @base.gsub!(/":::.*?_font_style:::"/, "")
+        @base.gsub!(/":::.*?_background:::"/, "")
+        @base.gsub!(/":::.*?_foreground:::"/, @options[:foreground])
+        @base.gsub!(/":::.*?:::"/, @options[:foreground])
+        @syntax_variables.gsub!(/":::.*?:::"/, @options[:foreground])
+        
     end
     
 end
