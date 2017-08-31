@@ -2,6 +2,8 @@ require 'fileutils'
 require 'date'
 
 class AtomOutputController 
+    attr_reader :options
+    
     def initialize(options, filepath)
         @directory = filepath.split("/")[0..-2].join("/")
         @options = options

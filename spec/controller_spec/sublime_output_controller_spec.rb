@@ -26,18 +26,17 @@ describe SublimeOutputController do
             :library_function_foreground=>"#DAD085",
         }
         
-        @controller = SublimeOutputController.new(@options)
+        gem_root = File.expand_path(__FILE__).split("/")[0..-4].join("/")
+        @folderpath = "#{gem_root}/example_files/atom"
+        
+        @controller = SublimeOutputController.new(@options, @folderpath)
         @controller.duplicate_template_files
     end
 
     describe "duplicate_template_files" do
         
-        before do
-           FileUtils.rm_rf("output/.", secure: true) 
-        end
-        
         it "moves template files to output/" do
-            expect(File.exist?("output/atom-dark-syntax.tmTheme"))
+            expect(File.exist?("#{@folderpath}/atom-dark-syntax/atom-dark-syntax.tmTheme"))
         end
     
     end
@@ -46,7 +45,7 @@ describe SublimeOutputController do
        
         before do
             @controller.insert_styles
-            @input_controller = SublimeInputController.new("output/atom-dark-syntax.tmTheme")
+            @input_controller = SublimeInputController.new("#{@folderpath}/atom-dark-syntax/atom-dark-syntax.tmTheme")
             @input_controller.parse_input_files
         end
       

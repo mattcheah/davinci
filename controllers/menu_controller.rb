@@ -49,6 +49,7 @@ class MenuController
                 puts "Enter the full filepath of your Atom theme directory"
                 puts "If you do not know where this can be found, please read the documentation."
                 @filepath = gets.chomp
+                @filepath = @filepath[0..-2] if @filepath[-1] == "/"
                 @input_controller = AtomInputController.new(@filepath)
             # when "3"
             #     @from_editor = "dreamweaver"
@@ -101,7 +102,7 @@ class MenuController
         case selection
         when "1"
             @to_editor = "sublime"
-            @output_controller = SublimeOutputController.new(@input_controller.options)
+            @output_controller = SublimeOutputController.new(@input_controller.options, @filepath)
         when "2"
             @to_editor = "atom"
             @output_controller = AtomOutputController.new(@input_controller.options, @filepath)
@@ -129,8 +130,13 @@ class MenuController
         @output_controller.duplicate_template_files
         print  "inserting theme colors"
         @output_controller.insert_styles
+        name = @output_controller.options[:theme_name]
+        
+        if @filepath[-8..-1] == ".tmTheme"
+            @filepath = @filepath.split("/")[0..-2].join("/")
+        end
         puts ""
-        puts "Translation Complete! Your new theme files are located in /output/"
+        puts "Translation Complete! Your new theme is located in #{@filepath}/#{name}/"
     end
 end
 
