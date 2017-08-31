@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.2"
   spec.add_development_dependency "byebug", "~> 9.0"
+  spec.add_development_dependency "rspec_junit_formatter", "~> 0.3"
   
   spec.add_dependency "coyote", "~> 1.2"
   spec.add_dependency "nokogiri", "~> 1.8"
