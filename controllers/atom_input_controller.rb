@@ -4,7 +4,6 @@ class AtomInputController
     attr_accessor :options
   
     def initialize(directory_path)
-        directory_path = directory_path[0..-2] if directory_path[-1] == "/"
           
         @directory_path = directory_path
         @package = File.read("#{@directory_path}/package.json")
