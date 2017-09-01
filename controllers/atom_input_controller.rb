@@ -1,4 +1,5 @@
 require "pp"
+require 'byebug'
 
 class AtomInputController
     attr_accessor :options
@@ -35,19 +36,54 @@ class AtomInputController
 
     def parse_colors
 
-      @base.scan(/^(@.*):\s+(.*);$/x) do |m|
-        
+      @less = {}
+
+      @base.scan(/^(@.*):\s*(.*);/i) do |m|
         if m[1][0] == "@"
-          color = @color_hash[m[1].underscore.to_sym]
+          @less[m[0]] = m[1]
         else
-          color = m[1]
+          @color_hash[m[0].underscore.to_sym] = m[1]
         end
         
-        # Match an @sign followed by a color name, then 0 or more spaces, then a pound sign with the color hex value.
-        @color_hash[m[0].underscore.to_sym] = color
         print "."
       end
       
+      if @less.length > 0
+        less_variable_reduce()
+      end
+      
+    end
+    
+    def less_variable_reduce()
+      
+      temp_less_var = {}
+      @less.each do |key, value|
+        
+        if @color_hash.has_key?(value.underscore.to_sym)
+          @color_hash[key.underscore.to_sym] = @color_hash[value.underscore.to_sym]
+          @less.delete(key)
+        end
+        
+        @base.scan(/^#{value}:\s+(.*);$/x) do |m|
+          if m
+            if m[0][0] == "@"
+              temp_less_var[key] = m[0]
+            else
+              @color_hash[value.underscore.to_sym] = m[0]
+              @color_hash[key.underscore.to_sym] = m[0]
+              @less.delete(key)
+              print "."
+            end
+          end
+        end
+        
+      end
+      
+      @less.merge(temp_less_var)
+      
+      if @less.length > 0
+        less_variable_reduce()
+      end
     end
 
     def get_base_options

@@ -27,7 +27,7 @@ describe SublimeOutputController do
         }
         
         gem_root = File.expand_path(__FILE__).split("/")[0..-4].join("/")
-        @folderpath = "#{gem_root}/example_files/atom"
+        @folderpath = "#{gem_root}/example_files/atom/atom-dark-syntax"
         
         @controller = SublimeOutputController.new(@options, @folderpath)
         @controller.duplicate_template_files
