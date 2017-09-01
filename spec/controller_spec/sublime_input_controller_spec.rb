@@ -23,7 +23,6 @@ describe SublimeInputController do
         end
     
         it "parses the primary styles correctly" do
-            byebug
             expect(@monokai_controller.options[:foreground]).to eq "#F8F8F2"
             expect(@monokai_controller.options[:background]).to eq "#272822"
             expect(@monokai_controller.options[:comment_foreground]).to eq "#75715E"
