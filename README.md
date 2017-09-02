@@ -1,6 +1,6 @@
 # DaVinci-Text
 
-https://circleci.com/gh/mattcheah/davinci.svg?style=shield&circle-token=5a1e0343c196170c3abe3387d7014657fef4b700
+![alt text](https://circleci.com/gh/mattcheah/davinci.svg?style=shield&circle-token=5a1e0343c196170c3abe3387d7014657fef4b700 "")
 
 Ruby command-line script to transfer your text-editor color scheme between the Sublime and Atom text editors. 
 
