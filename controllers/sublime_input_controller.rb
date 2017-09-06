@@ -10,7 +10,7 @@ class SublimeInputController
         if File.exists?(filepath)
             file = File.read(filepath)
         else
-            raise 
+            raise "Error: Sublime File does not exist at path: #{filepath}"
         end
         @xml = Nokogiri::XML(file)
         @options = {}
@@ -45,6 +45,7 @@ class SublimeInputController
         settings_values = first_setting.xpath('./dict/string/text()')
 
         settings_keys.each do |key|
+            print "."
             @options[key.text.underscore.to_sym] = settings_values.shift.text
         end
     end
@@ -52,6 +53,7 @@ class SublimeInputController
     def get_secondary_settings(all_settings)
         
         all_settings.each do |setting|
+            print "."
             foreground_value = setting.xpath('./dict/key[text()="foreground"]/following-sibling::string[1]/text()').text
             background_value = setting.xpath('./dict/key[text()="background"]/following-sibling::string[1]/text()').text
             font_style_value = setting.xpath('./dict/key[text()="fontStyle"]/following-sibling::string[1]/text()').text
@@ -76,7 +78,7 @@ class SublimeInputController
     end
     
     def cleanup_stragglers
-       #Some funky situations make this douche of a method to be necessary for renaming options that are enacted using scope and not name, etc.
+       #Some funky situations make this douche of a method to be necessary for renaming options that are enacted using scope that doesn't match the name, etc.
        
        #rename options hash:
        rename = {

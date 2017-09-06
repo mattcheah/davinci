@@ -34,14 +34,15 @@ class AtomOutputController
         File.open("#{@new_dir}/styles/base.less", 'w') { |f| f.write(@base) }
         File.open("#{@new_dir}/styles/syntax-variables.less", 'w') { |f| f.write(@syntax_variables) }
         puts "done!"
+        puts "Atom theme files created at #{@new_dir}"
     end
     
     private
     
     def read_files
-        @package = File.read("#{@new_dir}/package.json")
-        @base = File.read("#{@new_dir}/styles/base.less")
-        @syntax_variables = File.read("#{@new_dir}/styles/syntax-variables.less")
+            @package = File.read("#{@new_dir}/package.json")
+            @base = File.read("#{@new_dir}/styles/base.less")
+            @syntax_variables = File.read("#{@new_dir}/styles/syntax-variables.less")
     end
     
     def insert_syntax_variables

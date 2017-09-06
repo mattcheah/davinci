@@ -38,6 +38,7 @@ class SublimeOutputController
         File.open(@filepath, 'w') { |f| f.write(@base) }
         
         puts "done!"
+        puts "Sublime theme file created at #{@filepath}"
     end
     
     private

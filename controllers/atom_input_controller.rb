@@ -7,7 +7,11 @@ class AtomInputController
     def initialize(directory_path)
           
         @directory_path = directory_path
-        @package = File.read("#{@directory_path}/package.json")
+        if File.exist?("#{@directory_path}/package.json") && File.exist?("#{@directory_path}/index.less")
+          @package = File.read("#{@directory_path}/package.json")
+        else
+          raise "Error: Atom directory needs a package.json file and an index.less file at path in the directory: #{directory_path}"
+        end
         @options = {}
         @color_hash = {}
         `coyote '#{@directory_path}/index.less:#{@directory_path}/output.less'`

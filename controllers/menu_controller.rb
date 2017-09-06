@@ -36,22 +36,33 @@ class MenuController
         end
         
         begin
-        
             case selection
             when "1"
                 @from_editor = "sublime"
                 puts "Enter the full filepath of your Sublime tmTheme syntax color file."
                 puts "If you do not know where this can be found, please read the documentation."
-                @filepath = gets.chomp
+                @filepath = clean_directory_path(gets.chomp)
                 
-                @input_controller = SublimeInputController.new(@filepath)
+                begin
+                    @input_controller = SublimeInputController.new(@filepath)
+                rescue => e
+                    puts e
+                    raise
+                end
+                    
             when "2"
                 @from_editor = "atom"
                 puts "Enter the full filepath of your Atom theme directory"
                 puts "If you do not know where this can be found, please read the documentation."
-                @filepath = gets.chomp
-                @filepath = @filepath[0..-2] if @filepath[-1] == "/"
-                @input_controller = AtomInputController.new(@filepath)
+                @filepath = clean_directory_path(gets.chomp)
+                
+                begin
+                    @input_controller = AtomInputController.new(@filepath)
+                rescue => e
+                    puts e
+                    raise
+                end
+                
             # when "3"
             #     @from_editor = "dreamweaver"
             #     puts "Enter the full filepath of your Dreamweaver _____ file."
@@ -131,13 +142,6 @@ class MenuController
         @output_controller.duplicate_template_files
         print  "inserting theme colors"
         @output_controller.insert_styles
-        name = @output_controller.options[:theme_name]
-        
-        if @filepath[-8..-1] == ".tmTheme"
-            @filepath = @filepath.split("/")[0..-2].join("/")
-        end
-        puts ""
-        puts "Translation Complete! Your new theme is located in #{@filepath}/#{name}/"
     end
 end
 

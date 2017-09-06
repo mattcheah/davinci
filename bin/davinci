@@ -1,7 +1,16 @@
 #!/usr/bin/env ruby
 require_relative "../controllers/menu_controller.rb"
+require_relative "../controllers/cl_args_controller.rb"
 require "utility.rb"
 require "version.rb"
 
-menu = Davinci::MenuController.new()
-menu.start_menu
+args = ARGV
+if args.length == 0
+    menu = Davinci::MenuController.new()
+    menu.start_menu
+else
+    cl_controller = Davinci::ClArgsController.new(args)
+    cl_controller.run
+end
+    
+
