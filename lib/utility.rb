@@ -7,3 +7,15 @@ class String
     downcase
   end
 end
+
+def clean_directory_path(path)
+  if path[0] == "/"
+    path = path[1..-1]
+  end
+  
+  if path[-1] == "/"
+    path = path[0..-2]
+  end
+  
+  path
+end
