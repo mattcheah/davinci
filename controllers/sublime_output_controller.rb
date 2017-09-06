@@ -22,12 +22,17 @@ class SublimeOutputController
             FileUtils.rm_rf(@new_dir, secure: true)
         end
         
-        FileUtils.chmod(0755, "#{root_dir}/lib/templates/sublime/.")
-        FileUtils.cp_r("#{root_dir}/lib/templates/sublime/", @new_dir)
-
-        File.rename("#{@new_dir}newTheme.tmTheme", @filepath)
+        begin
+            FileUtils.chmod(0755, "#{root_dir}/lib/templates/sublime/.")
+            FileUtils.cp_r("#{root_dir}/lib/templates/sublime/", @new_dir)
+            File.rename("#{@new_dir}newTheme.tmTheme", @filepath)
+        rescue => e
+            puts e
+            puts "Try placing your theme file(s) inside a folder"
+            exit
+        end
         
-        # THIS WILL NEVER WORK. 
+        
     end
     
     def insert_styles
@@ -45,8 +50,10 @@ class SublimeOutputController
 
     def replace_options
         @options.each do |key, value|
-            print "."
-            @base.gsub!(/":::#{key.to_s}:::"/, value)
+            if value
+                print "."
+                @base.gsub!(/":::#{key.to_s}:::"/, value)
+            end
         end
         
     end

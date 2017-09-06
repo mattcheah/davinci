@@ -51,6 +51,9 @@ To exit the program any time, press ctrl+c
 If you don't want to go through the command line interface, simply provide arguments for your filepath (sublime) or directory path (atom), and the name of your output editor ("sublime" or "atom").
 
 `davinci example_files/sublime/monokai.tmTheme atom`
+
+or
+
 `davinci example_files/atom/atom-dark-syntax sublime`
 
 ## Warnings

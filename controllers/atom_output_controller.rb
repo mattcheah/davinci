@@ -18,8 +18,15 @@ class AtomOutputController
             FileUtils.rm_rf(@new_dir, secure: true)
         end
         
-        FileUtils.chmod(0755, "#{root_dir}/lib/templates/atom/")
-        FileUtils.cp_r("#{root_dir}/lib/templates/atom/", @new_dir)
+        begin
+            FileUtils.chmod(0755, "#{root_dir}/lib/templates/atom/")
+            FileUtils.cp_r("#{root_dir}/lib/templates/atom/", @new_dir)
+        rescue => e
+            puts e
+            puts "Try placing your theme file(s) inside a folder"
+            exit
+        end
+        
         
     end
     
