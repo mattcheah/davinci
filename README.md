@@ -16,6 +16,8 @@ You are now ready to use Davinci.
 
 ## Usage
 
+### Command Line Interface
+
 After instaling davinci, run it by simply typing `davinci` in the command line and follow the instructions.
 A command line prompt will show, asking you to choose the text editor you want to transfer your theme from. 
 
@@ -32,17 +34,24 @@ You may also use the example_files directory, which contains the default Atom th
     If you do not know where this can be found, please read the documentation.
     > /example_files/sublime/monokai.tmTheme
     
-Enter the path to your theme file or directory. The system will ask for an output text editor.
+Enter the path to your theme file or directory. Then give the output text editor to finish things up. 
 
     What editor would you like to move your color scheme to?
     (1) Sublime
     (2) Atom
     > 2
-    
-The system will output the parsed options into a theme template for your output text editor and place the file(s) into the /output/ folder. 
+
+The system will output the parsed options into a theme template for your output text editor and place the file(s) into a folder nested in the original filepath. 
 To add this newly created theme to your text editor, read the [Reference section](https://github.com/mattcheah/davinci/blob/master/REFERENCE.md). 
 
 To exit the program any time, press ctrl+c
+    
+### One Line Execution
+
+If you don't want to go through the command line interface, simply provide arguments for your filepath (sublime) or directory path (atom), and the name of your output editor ("sublime" or "atom").
+
+`davinci example_files/sublime/monokai.tmTheme atom`
+`davinci example_files/atom/atom-dark-syntax sublime`
 
 ## Warnings
 
@@ -52,7 +61,7 @@ This is further complicated by the fact that editors do not always categorize th
 
     System.out.println("Hello World!");
 
-is categorized in Sublime as a "Storage Type" keyword, usually reserved for keywords that affect the storage of an item (eg. __void__ in Java). However, in Atom, `System` is given the classes `"syntax--variable syntax--other syntax--object syntax--java"`. The most common of these classes would be `syntax--variable`, meaning that even if colors from other classes are parsed (they're not), the color would not necessarily show up the same when transferring between Atom and Sublime.  
+is categorized in Sublime as a "Storage Type" keyword, usually reserved for keywords that affect the storage of an item (eg. `void` in Java). However, in Atom, `System` is given the classes `"syntax--variable syntax--other syntax--object syntax--java"`. The most common of these classes would be `syntax--variable`, meaning that even if colors from other classes are parsed (they're not), the color would not necessarily show up the same when transferring between Atom and Sublime.  
 
 All this to say that the process is unstable and you may have to do a little bit of clean-up work on your resulting theme-files. I have found, however, that the overall look and feel of the theme is preserved.
 
@@ -68,7 +77,7 @@ Contributors who would like to add support for a new editor should make sure the
 * Rspec tests
     * Input Controllers: Tests should confirm that an options hash contains the correct colors for the primary theme styles (:foreground, :background, :comment_foreground, :string_foreground, etc)
     * Output Controllers: Tests should confirm that the colors from a given options hash show up correctly in the outputted file(s). If an input controller is provided, it can be used to confirm this. If not, the outputted file must be parsed manually. 
-* Updates to MenuController to include functionality.
+* Updates to MenuController and cl_args_controller to include functionality.
 
 ## License
 
